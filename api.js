@@ -53,7 +53,16 @@ async function createProduct(req, res) {
   console.log('request body:', req.body)
   res.json(req.body)
 }
-
+/**
+ * Create a new product
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+async function createProduct (req, res, next) {
+  const product = await Products.create(req.body)
+  res.json(product)
+}
 /**
  * Edit a product
  * @param {object} req
