@@ -126,3 +126,32 @@ async function get (_id) {
   const product = await Product.findById(_id)
   return product
 }
+// products.js
+
+/**
+ * Edit a product
+ * @param {String} _id
+ * @param {Object} change
+ * @returns {Promise<Object>}
+ */
+async function edit (_id, change) {
+  const product = await get(_id)
+
+  // todo can we use spread operators here?
+  Object.keys(change).forEach(function (key) {
+    product[key] = change[key]
+  })
+  
+  await product.save()
+
+  return product
+}
+
+/**
+ * Delete a product
+ * @param {String} _id
+ * @returns {Promise<Object>}
+ */
+async function destroy (_id) {
+  return await Product.deleteOne({_id})
+}
