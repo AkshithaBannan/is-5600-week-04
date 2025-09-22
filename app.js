@@ -217,3 +217,9 @@ app.delete("/products/:id", products.deleteProduct);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+// app.js
+
+// ...
+
+app.get('/orders', api.listOrders)
+app.get('/orders/', api.createOrder)
